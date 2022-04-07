@@ -1,0 +1,21 @@
+//************************************************************
+// this is a simple example that uses the easyMesh library
+//
+// 1. blinks led once for every node on the mesh
+// 2. blink cycle repeats every BLINK_PERIOD
+// 3. sends a silly message to every node on the mesh at a random time between 1 and 5 seconds
+// 4. prints anything it receives to Serial.print
+//
+//
+//************************************************************
+
+// Connect pin 1 (on the left) of the sensor to +5V
+// NOTE: If using a board with 3.3V logic like an Arduino Due connect pin 1
+// to 3.3V instead of 5V!
+// Connect pin 2 of the sensor to whatever your DHTPIN is
+// Connect pin 4 (on the right) of the sensor to GROUND
+// Connect a 10K resistor from pin 2 (data) to pin 1 (power) of the sensor
+
+// some gpio pin that is connected to an LED...
+// on my rig, this is 5, change to the right number of your LED.
+
