@@ -109,17 +109,17 @@ void loop() {
   // Compute heat index in Celsius (isFahreheit = false)
   float hic = dht.computeHeatIndex(t, h, false);
 
-  Serial.print(F("Humidity: "));
-  Serial.print(h);
-  Serial.print(F("%  Temperature: "));
-  Serial.print(t);
-  Serial.print(F("°C "));
-  Serial.print(f);
-  Serial.print(F("°F  Heat index: "));
-  Serial.print(hic);
-  Serial.print(F("°C "));
-  Serial.print(hif);
-  Serial.println(F("°F"));
+  // Serial.print(F("Humidity: "));
+  // Serial.print(h);
+  // Serial.print(F("%  Temperature: "));
+  // Serial.print(t);
+  // Serial.print(F("°C "));
+  // Serial.print(f);
+  // Serial.print(F("°F  Heat index: "));
+  // Serial.print(hic);
+  // Serial.print(F("°C "));
+  // Serial.print(hif);
+  // Serial.println(F("°F"));
   mesh.update();
   digitalWrite(LED, !onFlag);
 }
@@ -128,6 +128,8 @@ void sendMessage() {
   String msg = "Hello from node ";
   msg += mesh.getNodeId();
   msg += " myFreeMemory: " + String(ESP.getFreeHeap());
+  msg += " Temperature: " + String(dht.readTemperature());
+  msg += " Humidity: " + String(dht.readHumidity());
   mesh.sendBroadcast(msg);
 
   if (calc_delay) {
@@ -136,7 +138,7 @@ void sendMessage() {
       mesh.startDelayMeas(*node);
       node++;
     }
-    calc_delay = false;
+    calc_delay = true;
   }
 
   Serial.printf("Sending message: %s\n", msg.c_str());
